@@ -1,0 +1,39 @@
+<ion-view view-title="{{ ctrl.qe.name }}">
+  <!-- do you want padding -->
+  <ion-content class="qe-holder padding">
+
+    <ion-list>
+      <form ng-submit="ctrl.insertText(ctrl.newText)">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Enter text" ng-model="ctrl.newText">
+          </label>
+
+          <button type="submit" class="button button-outline button-small button-balanced">
+            Insert <i class="icon ion-arrow-down-a"></i>
+          </button>
+        </div>
+      </form>
+      <div class="item box" ng-style="{'background-color': ctrl.qe.color}">
+        <div class="inner-box">
+          <div class="count">
+            <h3><ng-pluralize count="ctrl.qe.count()"
+                          when="{'0': 'No items.',
+                         'one': '1 item.',
+                         'other': '{} items.'}">
+            </ng-pluralize></h3>
+          </div>
+        </div>
+      </div>
+      <div class="item item-icon-left item-button-right" ng-if="ctrl.qe.peak()">
+        <i class="icon ion-eye energized"></i>
+        {{ ctrl.qe.peak().text }}
+        <button class="button button-outline button-assertive" ng-click="ctrl.qe.poll()">
+          <i class="icon ion-ios-trash"></i>
+        </button>
+      </div>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>
